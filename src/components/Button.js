@@ -7,10 +7,10 @@ const Button = props => {
     <button className="btns" type="button">
       {name}
     </button>
-  )
-}
-Button.PropTypes = {
-  name: PropTypes.string
-}
+  );
+};
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
-export default Button
+export default Button;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Display = props => {
   const { result } = props;
@@ -6,10 +7,10 @@ const Display = props => {
     <div className="display">
       {result}
     </div>
-  )
-}
+  );
+};
 
-Display.prop = {
+Display.props = {
   result: PropTypes.string,
 };
 
@@ -17,4 +18,4 @@ Display.defaultProps = {
   result: '0',
 };
 
-export default Display
+export default Display;
