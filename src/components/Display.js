@@ -10,7 +10,7 @@ const Display = props => {
   );
 };
 
-Display.props = {
+Display.propTypes = {
   result: PropTypes.string,
 };
 
