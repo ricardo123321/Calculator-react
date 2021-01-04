@@ -9,4 +9,12 @@ const Display = props => {
   )
 }
 
+Display.prop = {
+  result: PropTypes.string,
+};
+
+Display.defaultProps = {
+  result: '0',
+};
+
 export default Display
