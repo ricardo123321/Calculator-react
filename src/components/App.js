@@ -2,18 +2,11 @@ import React from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
+const App = props => {
       <div className="App">
         <Display />
         <ButtonPanel />
       </div>
-    );
-  }
 }
+
+export default App
