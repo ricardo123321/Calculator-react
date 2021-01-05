@@ -27,7 +27,12 @@ class App extends Component {
 
     return (
       <>
-        <Display/>
+        <Display 
+                  result={
+                    `${(!total && next) || total || ''}
+                     ${operation || ''}
+                     ${(total && next) || ''}`
+                  }/>
         <ButtonPanel clickHandler={this.handleClick}/>
       </>
     );
