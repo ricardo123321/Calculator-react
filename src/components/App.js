@@ -34,9 +34,7 @@ class App extends Component {
     return (
       <>
         <Display result={
-            `${(!total && next) || total || ''}
-             ${operation || ''}
-             ${(total && next) || ''}
+            `${operation || ''}
              ${calc}`
           }
         />
