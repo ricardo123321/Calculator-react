@@ -7,7 +7,7 @@ const calculate = ({ total, next, operation }, buttonName) => {
   if (buttonName === 'AC') {
     return {
       total: 0,
-      next: null,
+      next: 0,
       operation: null,
     };
   }
