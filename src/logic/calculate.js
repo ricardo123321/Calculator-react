@@ -26,7 +26,7 @@ const calculate = ({ total, next, operation }, buttonName) => {
     }
   }
 
-  if (operands.includes(buttonName)) {
+  if (operations.includes(buttonName)) {
     if (total) operation = buttonName;
   }
 
