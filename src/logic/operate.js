@@ -5,13 +5,13 @@ const operate = (numberOne, numberTwo, operation) => {
   const secondNumber = new Big(numberTwo);
   switch (operation) {
     case '+':
-      return firstNumber.plus(secondNumber).toString();
+      return firstNumber.plus(secondNumber).toNumber();
     case '-':
-      return firstNumber.minus(secondNumber).toString();
+      return firstNumber.minus(secondNumber).toNumber();
     case 'X':
-      return firstNumber.times(secondNumber).toString();
+      return firstNumber.times(secondNumber).toNumber();
     case '÷':
-      return firstNumber.div(secondNumber).toString();
+      return firstNumber.div(secondNumber).toNumber();
     default:
       return '0';
   }

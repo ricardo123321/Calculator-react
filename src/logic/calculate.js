@@ -6,54 +6,73 @@ const calculate = ({ total, next, operation }, buttonName) => {
 
   if (buttonName === 'AC') {
     return {
-      total: 0,
-      next: 0,
+      total: null,
+      next: null,
       operation: null,
     };
   }
 
-  if (buttonName === '+/-') {
-    if (total) {
-      return {
-        total: (total * -1),
-        next,
-        operation,
-      };
-    }
-    if (next) {
-      return {
-        total,
-        next: (next * -1),
-        operation: null,
-      };
-    }
+  if (buttonName === '+/-' && !next && total && total !== 'ERROR') {
+    return {
+      total: -total,
+      next,
+      operation,
+    };
   }
 
-  if (buttonName === '%') {
-    if (total) {
-      return {
-        total,
-        next: (0.01 * total),
-        operation,
-      };
-    }
+  if (buttonName === '+/-' && next && total !== 'ERROR') {
+    return {
+      total,
+      next: -next,
+      operation,
+    };
   }
 
-  if (buttonName === '=') {
-    if (total && next && operation) {
-      return {
-        total: operate(total, next, operation),
-        next: null,
-        operation: null,
-      };
-    }
+  if (buttonName === '%' && next && !total) {
+    return {
+      total: operate(next, 0, '%'),
+      next: null,
+      operation,
+    };
   }
 
-  if (operations.includes(buttonName)) {
+  if (buttonName === '%' && !next && total) {
+    return {
+      total: operate(total, 0, '%'),
+      next: null,
+      operation,
+    };
+  }
+
+  if (operations.includes(buttonName) && next && !total) {
+    return {
+      total: next,
+      next: null,
+      operation: buttonName,
+    };
+  }
+
+  if (operations.includes(buttonName) && next && total && operation) {
+    return {
+      total: operate(total, next, operation),
+      next: null,
+      operation: buttonName,
+    };
+  }
+
+  if (operations.includes(buttonName) && total && !next) {
     return {
       total,
       next,
       operation: buttonName,
+    };
+  }
+
+  if (nums.includes(buttonName) && total && !operation && !next) {
+    return {
+      total: total ? `${total}${buttonName}` : `${buttonName}`,
+      next,
+      operation,
     };
   }
 
@@ -65,28 +84,38 @@ const calculate = ({ total, next, operation }, buttonName) => {
     };
   }
 
-  if (total && nums.includes(buttonName)) {
+  if (total === 'ERROR') {
     return {
-      total: buttonName,
-      next,
-      operation,
+      total: null,
+      next: null,
+      operation: null,
     };
   }
 
-  if (!next && !operation && buttonName === '.') {
+  if (buttonName === '=' && total && next && operation) {
     return {
-      total: total.includes(buttonName) ? total : total + buttonName,
-      next,
-      operation,
+      total: operate(total, next, operation),
+      next: null,
+      operation: null,
     };
   }
 
-  if (total && operation && buttonName === '.') {
-    return {
-      total,
-      next: next.includes(buttonName) ? next : next + buttonName,
-      operation,
-    };
+  if (buttonName === '.') {
+    if (!next) {
+      return {
+        total,
+        next: '0.',
+        operation,
+      };
+    }
+
+    if (next && !next.includes('.')) {
+      return {
+        total,
+        next: `${next}.`,
+        operation,
+      };
+    }
   }
 
   return { total, next, operation };
