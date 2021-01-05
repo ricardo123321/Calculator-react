@@ -30,6 +30,14 @@ const calculate = ({ total, next, operation }, buttonName) => {
     if (total) operation = buttonName;
   }
 
+  if (nums.includes(buttonName)) {
+    return {
+      total,
+      next: next ? `${next}${buttonName}` : `${buttonName}`,
+      operation,
+    };
+  }
+
 return { total, next, operation };
 
 }
