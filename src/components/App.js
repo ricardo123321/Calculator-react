@@ -37,7 +37,7 @@ class App extends Component {
             `
             ${total || ''}
             ${operation || ''}
-             ${calc}`
+             ${next || ''}`
           }
         />
         <ButtonPanel clickHandler={this.handleClick} />
