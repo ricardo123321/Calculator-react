@@ -68,6 +68,16 @@ const calculate = ({ total, next, operation }, buttonName) => {
     };
   }
 
+  if (buttonName === '0') {
+    if (!next) {
+      return {
+        total,
+        next: '',
+        operation,
+      };
+    }
+  }
+
   if (nums.includes(buttonName) && total && !operation && !next) {
     return {
       total: total ? `${total}${buttonName}` : `${buttonName}`,
