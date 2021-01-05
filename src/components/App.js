@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     let calc;
-    const { next, total } = this.state;
+    const { next, total, operation } = this.state;
     if (next !== null) {
       calc = next;
     } else if (total !== null) {
@@ -33,7 +33,13 @@ class App extends Component {
 
     return (
       <>
-        <Display calc={calc}/>
+        <Display result={
+            `${(!total && next) || total || ''}
+             ${operation || ''}
+             ${(total && next) || ''}
+             ${calc}`
+          }
+        />
         <ButtonPanel clickHandler={this.handleClick} />
       </>
     );
