@@ -23,13 +23,17 @@ class App extends Component {
   }
 
   render() {
-    const { next, total, operation } = this.state;
+    let calc;
+    const { next, total } = this.state;
+    if (next !== null) {
+      calc = next;
+    } else if (total !== null) {
+      calc = total;
+    }
 
     return (
       <>
-        <Display
-          result
-        />
+        <Display calc={calc}/>
         <ButtonPanel clickHandler={this.handleClick} />
       </>
     );
