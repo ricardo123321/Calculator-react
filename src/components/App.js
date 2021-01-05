@@ -13,7 +13,13 @@ class App extends Component {
       next: null,
       operation: null,
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick(operation) {
+    this.setState(
+      prevState => (calculate(prevState, operation)),
+    );
   }
 
   render() {
@@ -22,7 +28,7 @@ class App extends Component {
     return (
       <>
         <Display/>
-        <ButtonPanel/>
+        <ButtonPanel clickHandler={this.handleClick}/>
       </>
     );
   }
