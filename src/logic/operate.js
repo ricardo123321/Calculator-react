@@ -5,16 +5,16 @@ const operate = (numberOne, numberTwo, operation) => {
   const secondNumber = new Big(numberTwo);
   switch (operation) {
     case '+':
-      return one.plus(two).toString();
+      return firstNumber.plus(secondNumber).toString();
     case '-':
-      return one.minus(two).toString();
+      return firstNumber.minus(secondNumber).toString();
     case 'X':
-      return one.times(two).toString();
+      return firstNumber.times(secondNumber).toString();
     case '÷':
-      return one.div(two).toString();
+      return firstNumber.div(secondNumber).toString();
     default:
       return '0';
   }
-}
+};
 
 export default operate;
