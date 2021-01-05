@@ -16,9 +16,9 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(operation) {
+  handleClick(buttonName) {
     this.setState(
-      prevState => (calculate(prevState, operation)),
+      prevState => (calculate(prevState, buttonName)),
     );
   }
 
@@ -34,7 +34,9 @@ class App extends Component {
     return (
       <>
         <Display result={
-            `${operation || ''}
+            `
+            ${total || ''}
+            ${operation || ''}
              ${calc}`
           }
         />
